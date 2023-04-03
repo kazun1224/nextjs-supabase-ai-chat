@@ -1,15 +1,18 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import { PostNew, PostList } from "@/components";
+import { Suspense } from "react";
+import Loading from "./loading";
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
+const Home =()=> {
   return (
-    <main >
-      <h1 className="text-3xl font-bold underline text-red-600">
-      Hello world!
-    </h1>
-
-    </main>
-  )
+    <div>
+      <Suspense fallback={<Loading />}>
+        {/*@ts-ignore */}
+        <PostList />
+      </Suspense>
+      <PostNew />
+    </div>
+  );
 }
+
+
+export default Home;
